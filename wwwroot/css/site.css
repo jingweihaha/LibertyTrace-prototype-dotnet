@@ -24,6 +24,11 @@ a {
   border-color: #1861ac;
 }
 
+.mainpage {
+    height:90vh !important; 
+    background-color: rgba(233,233,233,0.5)
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -51,80 +56,48 @@ button.accept-policy {
   line-height: inherit;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-
-/* The side navigation menu */
-.sidebar {
-    margin: 0;
-    padding: 0;
-    /*width: 200px;*/
-    background-color: #f1f1f1;
-    /*position: fixed;*/
-    height: 100%;
-    /*  overflow: auto;*/
-}
-
-/* Sidebar links */
-.sidebar a {
-    display: block;
-    color: black;
-    padding: 16px;
-    text-decoration: none;
-}
-
-/* Active/current link */
-.sidebar a.active {
-    background-color: #4CAF50;
-    color: white;
-}
-
-/* Links on mouse-over */
-.sidebar a:hover:not(.active) {
-    background-color: #555;
-    color: white;
-}
-
 @media (min-width: 1500px) {
     .container { 
         max-width: 1400px !important;
     }    
 }
 
-/*@media screen and (min-width: 1500px) {
-    .mainpage {
-        max-width: 1400px;
-    }
-}*/
+div {
+    margin:auto;
+    margin-top:0px;
+}
 
-/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
-/*div.content {
-    margin-left: 200px;
-    padding: 1px 16px;
-    height: 1000px;
-}*/
+table th {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
 
-/* On screens that are less than 700px wide, make the sidebar into a topbar */
-/*@media screen and (max-width: 700px) {
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
+th {
+    background-color: #1976D2;
+    color: #fff;
+}
 
-        .sidebar a {
-            float: left;
-        }
+th, td {
+    padding: 1em .5em;
+}
 
-    div.content {
-        margin-left: 0;
-    }
-}*/
+table tr {
+    color: #212121;
+    height:10%;
+}
 
-/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
-/*@media screen and (max-width: 400px) {
-    .sidebar a {
-        text-align: center;
-        float: none;
-    }
-}*/
+table tr:nth-child(odd) {
+    background-color: #BBDEFB;
+}
+
+.filter div{
+    margin-top:0px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+}
+
+.input-group selectpicker, .input-group button {
+    background: white;
+}

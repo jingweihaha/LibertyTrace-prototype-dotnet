@@ -5,8 +5,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - LibertyTrace-DEV-R1-2</title>
+    <title>@ViewData["Title"] - LibertyTrace-DEV</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-select.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
@@ -14,7 +15,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LibertyTrace-DEV-R1-2</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LibertyTrace-DEV</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -22,10 +23,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Consumer" asp-action="Index">Consumer Search</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Consumer Search</a>
                         </li>
 
                         <li class="nav-item dropdown">
@@ -39,41 +40,41 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Logout" asp-action="Index">Logout</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Logout</a>
                         </li>
 
 
                         @*@for (int i = 0; i < MenuItems.Count; i++)
-        {
-            <li class="nav-item">
-                @if(MenuItems[i].)
-                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">@MenuItems[i].MenuText</a>
-            </li>
-        }*@
+                            {
+                                <li class="nav-item">
+                                    @if(MenuItems[i].)
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">@MenuItems[i].MenuText</a>
+                                </li>
+                            }*@
 
 
                         @*<li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </li>*@
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>*@
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <div class="container mainpage" style="height:90vh; background-color: yellowgreen">
+    <div class="container" style="height:90Vh; background:rgba(233,233,233,0.5)">
         @*<div class="row" style="height:100%">
             <div class="col-12">*@
-                @*<div class="container" style="background-color: yellowgreen; height:100%; ">*@
-                    <main role="main" class="pb-3">
-                        @RenderBody()
-                    </main>
-                @*</div>*@
-            @*</div>
-        </div>*@
+        @*<div class="container" style="background-color: yellowgreen; height:100%; ">*@
+        <main role="main" class="pb-3" style="height:100%">
+            @RenderBody()
+        </main>
+        @*</div>*@
+        @*</div>
+            </div>*@
     </div>
 
     <footer class="border-top footer text-muted">
@@ -83,6 +84,7 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap-select.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>

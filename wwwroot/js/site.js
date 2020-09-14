@@ -2,3 +2,8 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+$("#samsIdInput").keypress(function () {
+    $.get('/UserCases/FindCases', $("#samsIdInput").val(), function (data) {
+        console.log(data);
+    });
+});

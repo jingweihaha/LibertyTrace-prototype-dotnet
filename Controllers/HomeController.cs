@@ -5,20 +5,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using LibertyTrace_prototype_dotnet.Models;
 using LibertyHealthcare.PAAPS.Core.Interfaces;
+using LibertyHealthcare.PAAPS.Core.Models;
+using AutoMapper;
 
 namespace LibertyHealthcare.PAAPS.Web.Controllers
 { 
     public class HomeController : BaseController
     {
-    
+          
         private readonly IUserCasesService _userCasesService;
-        private readonly IMenuItemsService _menuItemsService;
-        public HomeController(IUserCasesService userCasesService, IMenuItemsService menuItemsService):base(menuItemsService, userCasesService)
+        private readonly IUsersService _usersService;
+        private readonly IMapper _mapper;
+
+        public HomeController(IUsersService usersService, IUserCasesService userCasesService, IMapper mapper):base(usersService, userCasesService, mapper)
         {
-            _menuItemsService = menuItemsService;
+            _usersService = usersService;
             _userCasesService = userCasesService;
+            _mapper = mapper;
         }
 
         public IActionResult Index()

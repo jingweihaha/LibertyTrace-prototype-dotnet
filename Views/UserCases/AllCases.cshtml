@@ -1,0 +1,148 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@model UserCaseViewModel
+<div class="row" style="height:10%; text-align:center;margin:auto">
+    <p class="h3" style="text-align:center; width:100%; margin-top:1vh;">
+        All Cases
+    </p>    
+</div>
+
+<div class="row" style="width: 100%;height: 30%; margin:auto;">
+    <form asp-controller="UserCases" asp-action="Search" method="post" style="width:100%;height:100%;">
+        <div class="row filter" style="width:100%;height:50%;margin:auto;">
+            <div class="form-group col-2">
+                <p>
+                    SAMS ID
+                </p>
+                <div class="input-group mb-3">
+                    <input type="text" id="samsIdInput" asp-for="SAMSID" class="form-control" placeholder="SAMS ID" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                </div>
+            </div>
+            <div class="form-group col-2">
+                <p>
+                    Status
+                </p>
+                @*<div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Status" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                </div>*@
+                <div class="input-group mb-3">
+                    <select class="selectpicker" asp-for="CaseStatusSearch" id="statusSelect">
+                        @*<option selected>Choose...</option>*@
+                        @foreach (var status in ViewBag.Status)
+                        {
+                            <option value="@status">@status</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-2">
+                <p>
+                    Assigned To
+                </p>
+                <div class="input-group mb-3">
+                    @*<input type="text" class="form-control" placeholder="Assigned To" aria-label="Recipient's username" aria-describedby="basic-addon2">*@
+                    <select class="selectpicker" asp-for="AssignedToSearch" multiple data-live-search="true" id="assignedToSelect">
+                        @*<option selected>Choose...</option>*@
+                        @foreach (var user in (List<Infrastructure.Models.VwUser>)ViewBag.Users)
+                        {
+                            <option value="@user.FullName">@user.FullName</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-2">
+                <p>
+                    Category
+                </p>
+                <div class="input-group mb-3">
+                    @*<input type="text" class="form-control" placeholder="Assigned To" aria-label="Recipient's username" aria-describedby="basic-addon2">*@
+                    <select class="selectpicker" asp-for="CategorySearch" multiple data-live-search="true" id="categorySelect">
+                        @*<option selected>Choose...</option>*@
+                        @foreach (var str in (string[])ViewBag.Category)
+                        {
+                            <option value="@str">@str</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-2">
+                <p>
+                    Supervisor
+                </p>
+                <div class="input-group mb-3">
+                    @*<input type="text" class="form-control" placeholder="Assigned To" aria-label="Recipient's username" aria-describedby="basic-addon2">*@
+                    <select class="selectpicker" asp-for="SupervisorSearch" multiple data-live-search="true" id="supervisorSelect">
+                        @*<option selected>Choose...</option>*@
+                        @foreach (var user in (List<Infrastructure.Models.VwUser>)ViewBag.Users)
+                        {
+                            <option value="@user.FullName">@user.FullName</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-2">
+                <p>
+                    Created By
+                </p>
+                <div class="input-group mb-3">
+                    @*<input type="text" class="form-control" placeholder="Assigned To" aria-label="Recipient's username" aria-describedby="basic-addon2">*@
+                    <select class="selectpicker" asp-for="CreatedBySearch" multiple data-live-search="true" id="createdBySelect">
+                        @*<option selected>Choose...</option>*@
+                        @foreach (var user in (List<Infrastructure.Models.VwUser>)ViewBag.Users)
+                        {
+                            <option value="@user.FullName">@user.FullName</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="height:50%; margin:auto; ">
+            <div class="col-2 offset-10" style="margin-top:0px;">
+                <input type="submit" class="btn btn-primary col-12" value="Submit">
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row" style="height:60%;margin:auto;width:100%;">
+    <div style="overflow-x:auto;width:100%;max-height:100%;">
+        <table style="height:100%;width:100%;margin:auto;">
+                <thead style="max-height:10%;">
+                    <tr>
+                        <th>SAMS ID</th>
+                        <th>Initials</th>
+                        <th>Status</th>
+                        <th>Assigned To</th>
+                        <th>Category</th>
+                        <th>Ron Received</th>
+                        <th>Determination</th>
+                        <th>Days Open</th>
+                        <th>Supervisor</th>
+                        <th>CreatedBy</th>
+                    </tr>
+                </thead>
+                <tbody style="overflow-y:auto; max-height:90%;">
+
+                    @foreach (var userCase in ViewBag.AllCases)
+                    {
+                        <tr>
+                            <td>@userCase.SAMSID</td>
+                            <td>@userCase.Initials</td>
+                            <td>@userCase.CaseStatus</td>
+                            <td>@userCase.AssignedTo</td>
+                            <td>@userCase.Category</td>
+                            <td>@userCase.RonreceivedDate</td>
+                            <td>@userCase.Determination</td>
+                            <td>@userCase.DaysOpen</td>
+                            <td>@userCase.Supervisor</td>
+                            <td>@userCase.CreatedBy</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+    </div>
+
+</div>

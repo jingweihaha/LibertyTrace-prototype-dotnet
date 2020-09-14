@@ -2,15 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using LibertyHealthcare.PAAPS.Core.AutoMappers;
 using LibertyHealthcare.PAAPS.Core.Interfaces;
 using LibertyHealthcare.PAAPS.Core.Services;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using LibertyHealthcare.PAAPS.Infrastructure.Models;
 
 namespace LibertyTrace_prototype_dotnet
 {
@@ -26,9 +29,11 @@ namespace LibertyTrace_prototype_dotnet
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContextPool<PA_APS_Dev_dbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllersWithViews();
-            services.AddSingleton<IMenuItemsService, MenuItemsService>();
             services.AddScoped<IUserCasesService, UserCasesService>();
+            services.AddScoped<IUsersService, UsersService>();
+            services.AddAutoMapper(typeof(AutoMapperConfig));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,8 +60,12 @@ namespace LibertyTrace_prototype_dotnet
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=UserCases}/{action=Index}");
+
+                
             });
+
+            
         }
     }
 }
